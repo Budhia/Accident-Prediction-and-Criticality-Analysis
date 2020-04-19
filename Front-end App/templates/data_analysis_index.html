@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Plotting Graph</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700|Poiret+One' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/data_analysis_style.css') }}">
+</head>
+
+<body>
+	<header>
+        <h1 class="logo">Accident Prediction</h1>
+    </header>
+    <nav>
+        <ul>
+          <li class="nav-item"><a href="{{ url_for('home') }}" >Home</a></li>
+          <li class="nav-item"><a href="{{ url_for('data_analysis_home') }}" >Accident Analysis</a></li>
+          <li class="nav-item"><a href="{{ url_for('prediction_home') }}" >Accident Prediction</a></li>
+          <li class="nav-item"><a href="{{ url_for('accident_criticality') }}" >Accident Criticality</a></li>
+          <li class="nav-item"><a href="{{ url_for('graph_image') }}" >Prediction Graph</a></li>           
+          <li class="nav-item"><a href="{{ url_for('weather_API') }}" >Weather API</a></li>
+          <li class="nav-item"><a href="{{ url_for('about_Team') }}" >About</a></li>
+        </ul>
+    </nav>
+	<div class="container">
+	  <div class="row">
+	    <div class="col-md-12">
+	      <div id="ataa-slider">
+	        <div  data-src="{{url_for('static', filename='image_1.jpg')}}" data-desc="this is the test image number 1" data-name="image No.1" alt=""></div>
+	        <div  data-src="{{url_for('static', filename='image_2.png')}}" data-desc="this is the test image number 2" data-name="image No.2" alt=""></div>
+	        <div  data-src="{{url_for('static', filename='image_3.png')}}" data-desc="this is the test image number 3" data-name="image No.3" alt=""></div>
+	      </div>
+	    </div>
+	  </div>
+	 </div>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"></script>
+   <script type="text/javascript" src="{{ url_for('static', filename='javascript/data_analysis_script.js') }}"></script>
+</body>
+</html>
+
+    

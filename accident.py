@@ -209,7 +209,7 @@ def test_all(sess,num,path,x,keep,y,loss,lstm_variables,soft_pred):
     evaluation(all_pred,all_labels)
 
     
-def evaluation(all_pred,all_labels, total_time = 90, vis = False, length = None):
+def evaluation(all_pred,all_labels, total_time = 90, vis = True, length = None):
     ### input: all_pred (N x total_time) , all_label (N,)
     ### where N = number of videos, fps = 20 , time of accident = total_time
     ### output: AP & Time to Accident
@@ -324,10 +324,9 @@ def video_make(cnt):
         img = cv2.imread(filename)
         height, width, layers = img.shape
         size = (width,height)
-        img_array.append(img)
+        img_array.append(img)     
      
-     
-    out = cv2.VideoWriter('project_'+cnt+'.avi',cv2.VideoWriter_fourcc(*'DIVX'), 15, size)
+    out = cv2.VideoWriter('project_'+cnt+'.mp4',cv2.VideoWriter_fourcc(*'MP4V'), 25, size)
      
     for i in range(len(img_array)):
         out.write(img_array[i])
@@ -344,8 +343,6 @@ def vis(model_path):
     saver = tf.train.Saver()
     # restore model
     saver.restore(sess, model_path)
-    fourcc = cv2.VideoWriter_fourcc(*'MPEG')
-    out = cv2.VideoWriter('output.avi',fourcc, 20.0, (640,480)) 
     # load data
     #for num_batch in range(1,test_num):
     num_batch=random.randrange(0, 47)
@@ -412,7 +409,7 @@ def vis(model_path):
                 size = (width,height)
                 img_array.append(img)             
              
-            out = cv2.VideoWriter('project_'+str(cnt)+'.avi',cv2.VideoWriter_fourcc(*'DIVX'), 15, size)
+            out = cv2.VideoWriter('project_'+str(cnt)+'.avi',cv2.VideoWriter_fourcc(*'XVID'), 25, size)
              
             for z in range(len(img_array)):
                 out.write(img_array[z])
@@ -436,21 +433,19 @@ def test(model_path):
     saver = tf.train.Saver()
     saver.restore(sess, model_path)
     print ("model restore!!!")
-    print( "Training")
-    test_all(sess,train_num,train_path,x,keep,y,loss,lstm_variables,soft_pred)
+    #print( "Training")
+    #test_all(sess,train_num,train_path,x,keep,y,loss,lstm_variables,soft_pred)
     print( "Testing")
     test_all(sess,test_num,test_path,x,keep,y,loss,lstm_variables,soft_pred)
 
+# args = parse_args()
+# if args.gpu:
+#     os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
+# else:
+#     os.environ['CUDA_VISIBLE_DEVICES'] = '0' 
+# vis(args.model)
 
-
-#args = parse_args()
-#if args.gpu:
-#    os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
-#else:
-#    os.environ['CUDA_VISIBLE_DEVICES'] = '0' 
-#vis(args.model)
-
-#    
+    
 if __name__ == '__main__':
     args = parse_args()
     if args.gpu:

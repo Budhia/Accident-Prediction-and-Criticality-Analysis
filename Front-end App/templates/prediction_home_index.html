@@ -37,23 +37,26 @@
       			<div class="blog-post">
         			<h1 class="blog-title">Introduction</h1>
         			<h2 class="date">Brief Overview</h2>
-        			<p class="blog-content">Ut noster tractavissent, summis hic eiusmod te quem. Doctrina velit litteris eu 
-        				eu fore ingeniis philosophari ne quid o ingeniis ne anim, illum ea iudicem. Pariatur duis dolor hic dolor ad vidisse amet elit ita summis, quo duis te  malis, velit nostrud ingeniis. Appellat elit tamen iudicem multos, mentitum quae sed appellat illustriora. Velit commodo cernantur se si anim do labore, probant ab aliqua aut non laborum fidelissimae. Ex quae se fugiat, et malis officia in et enim cillum ita incididunt, a irure amet an ingeniis.</p>
+        			<p class="blog-content">The prediction model will take the input video and pass it into the object detection model to classify the different object up to the most accuracy. Then it will pass onto the attention model which will then pass onto the RNN network which will predict whether accident is going to happen or not. If the accident is about to happen an ALERT will be issued and a probability graph will be plotted.
+						The probability graph gives a brief insight into how the probability ranges during the interval of the accident and if the total probability crossed a particular threshold the ALERT is issued.		
+					</p>
         				<!-- <a href="#" class="post-link">Read More...</a> -->
       			</div>		
 				
 				<div class="blog-post">
-        			<h1 class="blog-title">Title</h1>
-        			<h2 class="date">Posted 22nd Feb 2015</h2>
-        			<p class="blog-content">Dolor offendit et consectetur, ut mandaremus est litteris, noster ab ab labore cernantur eu nulla incurreret imitarentur, qui fore malis e doctrina, de anim esse do appellat, proident sint litteris, anim arbitror consequat. Proident illum nulla laborum fore. Sed tamen litteris probant, summis exercitation consequat minim eiusmod hic ea dolor admodum vidisse, aliquip eruditionem id possumus. Si lorem ex culpa. Summis eiusmod a mentitum. Nisi deserunt vidisse a ingeniis velit ex cernantur reprehenderit, est appellat an incididunt ad duis non fabulas ut aute id an offendit adipisicing, ad duis litteris, ubi quid ea anim do appellat veniam aut officia illustriora. Quamquam ubi tamen appellat et eu ex duis pariatur eu qui arbitror exercitation, te laboris exercitation. Vidisse varias quem te amet, esse iudicem do comprehenderit, incididunt a commodo, consequat si summis excepteur ne amet de vidisse se fore, lorem distinguantur consequat varias nescius, quae incididunt qui instituendarum, uibusdam ad summis.</p>
+        			<h1 class="blog-title">Object Detection</h1>
+        			<h2 class="date">Image Classification</h2>
+        			<p class="blog-content">Convolution is defined as an operation, suppose we have an input I, and a kernel K to give an output, that tells us how the input I is modified by kernel. For a faster and better object detection, YOLO is a state-of-the-art algorithm which can detect objects in real time. YOLO is a convolutional network which gives multiple bounding boxes and probabilities simultaneously. We utilize the YOLO v3 extracted feature of an image for every frame, which helps in identifying potential danger and later fed to a combination of attention and LSTM model to predict the probability of accident based on the available information.</p>
         			<!-- <a href="#" class="post-link">Read More...</a> -->
       			</div>
 
 				<div class="blog-post">
-				    <h1 class="blog-title">Title</h1>
-        			<h2 class="date">Posted 12th Feb 2015</h2>
-            		<p class="blog-content">Expetendis qui probant, enim arbitror de enim irure ubi e arbitror praetermissum, nulla de probant. Velit incididunt et sint quorum. Ita an sempiternum ita senserit fidelissimae de vidisse est o esse si quid iis deserunt est tempor o ab lorem consequat, et occaecat nam doctrina, ad ex nisi senserit, amet exquisitaque laborum eram iudicem. Sed id cillum aliquip, nulla e de fugiat ingeniis. Eiusmod amet aliqua appellat sunt. Ea amet expetendis litteris, in dolor quamquam proident, quorum consequat id quorum aute iis ut nisi tempor. Ea senserit ne senserit. Qui ad fugiat mandaremus ut iis de sint elit tamen o pariatur nulla varias an dolore, probant nisi varias an multos, aliqua nam nam illum officia, an non praetermissum iis senserit enim ullamco do quid o 
-            			arbitror.</p>
+				    <h1 class="blog-title">Recurrent Neural Network</h1>
+        			<h2 class="date">LSTM</h2>
+            		<p class="blog-content">A Neural network can be defined as a differential function which maps one kind of variable to another kind of variable. Like in classification problem we convert vector to vectors and in regression model we convert vector to scalars.
+						Our model is a combination of sequence to vector model and encode where we feed sequence of images (frame) in the model and we predict at which frame whether the accident will occur using the probability generated by the attention model which we will see in the later section.
+						¬For building a LSTM Network we replace every hidden unit with a LSTM cell and add another connection from every other cell called cell state. LSTM primarily were designed to mitigate and solve the vanishing and exploding gradient problem. An LSTM has the same flow as an recurrent neural network. IT processes data sequentially passing all information as it propagates forward. The difference is how the information is operated or processed inside a LSTM cell. These operations are used to allow the LSTM cell to forget or keep information.
+					</p>
 				    <!-- <a href="#" class="post-link">Read More...</a> -->
 				</div>
 			</div>
@@ -61,11 +64,11 @@
 			<aside class="col span_1_of_3">
 			    <div class="side-post">
 			        <img src="{{url_for('static', filename='prediction.jpg')}}" alt="img">
-            		<p class="side-content">Ut noster tractavissent, summis hic eiusmod te quem. Doctrina velit litteris eu eu fore ingeniis philosophari ne quid o ingeniis ne anim, illum ea iudicem. Pariatur duis dolor hic dolor ad vidisse amet elit ita summis, quo duis te malis.</p>
+            		<p class="side-content">Predictive modeling, also called predictive analytics, is a mathematical process that seeks to predict future events or outcomes by analyzing patterns that are likely to forecast future results. The goal of predictive modeling is to answer this question: “Based on known past behavior, what is most likely to happen in the future?</p>
 				</div>
 				
 				<div class="side-post">
-				    <p class="side-content">Ultricies lacus et, non orci gravida purus augue integer, sed turpis. Erat dapibus. 						Eleifend massa scelerisque, aenean penatibus laoreet ut in.</p>
+				    <p class="side-content">Click the below link to obtain the result for prediction model</p>
         				<a href="{{ url_for('accident_prediction') }}" class="button">Results</a>
 				    </div>
 			    </aside>
